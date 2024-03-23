@@ -8,20 +8,24 @@
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 		"dockerfile": "../Dockerfile"
 	},
+	
+	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
-		"ghcr.io/joshspicer/more-features/cowsay:1": {}
+		"ghcr.io/joshspicer/more-features/cowsay:1": {},
+		"ghcr.io/devcontainers-contrib/features/ffmpeg-apt-get:latest": {}		
 	},
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
 		8000
-	]
+	],
 
 	// Uncomment the next line to run commands after the container is created.
-	// "postCreateCommand": "cat /etc/os-release",
+	"postCreateCommand": [
+		"cat /etc/os-release",
+		"apt install -q -y git" 
+	]
 
 	// Configure tool-specific properties.
 	// "customizations": {},
